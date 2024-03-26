@@ -15,8 +15,18 @@ class CreateSaucesTable extends Migration
     {
         Schema::create('sauces', function (Blueprint $table) {
             $table->id();
+            $table->string('userId');
+            $table->string('name');
+            $table->string('manufacturer');
+            $table->text('description');
+            $table->string('mainPepper');
+            $table->string('imageUrl');
+            $table->integer('heat');
+            $table->integer('likes')->default(0);
+            $table->integer('dislikes')->default(0);
+            $table->json('usersLiked')->nullable();
+            $table->json('usersDisliked')->nullable();
             $table->timestamps();
-            $table->json('userLiked');
         });
     }
 
