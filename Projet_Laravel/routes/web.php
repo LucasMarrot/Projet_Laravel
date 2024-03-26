@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\SauceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::prefix('/sauce')->name('sauce.')->controller(SauceController::class)->group(function(){
 
-Route::get('/test', function (Request $request){
-    return $request->input("name");
+    Route::get('/', 'index')->name('index');
+    
+    Route::get('/{name}/{id}', 'show')->where([
+        'id' => '[0-9]+',
+        'name' => '[a-z0-9\-\_]+'
+    ])->name('show');
 });
 
 Auth::routes();

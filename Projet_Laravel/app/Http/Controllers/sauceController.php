@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class sauceController extends Controller
+class SauceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index() : Paginator
     {
-        //
+        return \App\Models\Sauce::paginate(25);
     }
 
     /**
@@ -43,9 +43,11 @@ class sauceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) : Sauce
     {
-        //
+        $sauce = \App\Models\Sauce::findOrFail($id);
+
+        return $sauce;
     }
 
     /**
