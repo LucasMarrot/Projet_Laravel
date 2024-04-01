@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Models\Sauce;
+use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\View\View;
 
 class SauceController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\View\View
      */
-    public function index() : Paginator
+    public function index() : View
     {
-        return \App\Models\Sauce::paginate(25);
+        return view('sauce.index', [
+            'sauces' => Sauce::paginate(10)
+        ]);
     }
 
     /**
@@ -41,13 +47,15 @@ class SauceController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\View\View
      */
-    public function show($id) : Sauce
+    public function show($id) : View
     {
-        $sauce = \App\Models\Sauce::findOrFail($id);
+        $sauce = Sauce::findOrFail($id);
 
-        return $sauce;
+        return view('sauce.show', [
+            'sauce' => $sauce
+        ]);
     }
 
     /**

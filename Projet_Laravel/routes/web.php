@@ -19,16 +19,11 @@ Route::prefix('/sauce')->name('sauce.')->controller(SauceController::class)->gro
 
     Route::get('/', 'index')->name('index');
     
-    Route::get('/{name}/{id}', 'show')->where([
+    Route::get('/{id}', 'show')->where([
         'id' => '[0-9]+',
-        'name' => '[a-z0-9\-\_]+'
     ])->name('show');
 });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
