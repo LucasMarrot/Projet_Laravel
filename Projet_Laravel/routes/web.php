@@ -19,7 +19,7 @@ Route::prefix('/sauce')->name('sauce.')->controller(SauceController::class)->gro
 
     Route::get('/', 'index')->name('index');
     
-    Route::get('/{id}', 'show')->where([
+    Route::get('/{sauce}', 'show')->where([
         'id' => '[0-9]+',
     ])->name('show');
 });

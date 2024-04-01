@@ -16,7 +16,7 @@
             <p><strong>Heat:</strong> {{ $sauce->heat }}/10</p>
             <p><strong>Likes:</strong> {{ $sauce->likes }}</p>
             <p><strong>Dislikes:</strong> {{ $sauce->dislikes }}</p>
-            <a href="{{ route('sauce.show', ['id' => $sauce->id]) }}">Voir la sauce</a>
+            <a href="{{ route('sauce.show', ['sauce' => $sauce->id]) }}">Voir la sauce</a>
         </article>
     @endforeach
 

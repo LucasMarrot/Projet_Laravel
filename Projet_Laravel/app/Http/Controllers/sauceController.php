@@ -49,10 +49,8 @@ class SauceController extends Controller
      * @param  int  $id
      * @return Illuminate\View\View
      */
-    public function show($id) : View
+    public function show(Sauce $sauce) : View
     {
-        $sauce = Sauce::findOrFail($id);
-
         return view('sauce.show', [
             'sauce' => $sauce
         ]);
