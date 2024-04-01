@@ -18,6 +18,12 @@ use App\Http\Controllers\SauceController;
 Route::prefix('/sauce')->name('sauce.')->controller(SauceController::class)->group(function(){
 
     Route::get('/', 'index')->name('index');
+
+    Route::get('/new', 'create')->name('create');
+    Route::post('/new', 'store');
+
+    Route::get('/{sauce}/edit', 'edit')->name('edit');
+    Route::post('/{sauce}/edit', 'update');
     
     Route::get('/{sauce}', 'show')->where([
         'id' => '[0-9]+',

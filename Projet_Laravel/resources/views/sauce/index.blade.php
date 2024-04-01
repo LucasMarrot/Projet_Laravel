@@ -7,7 +7,7 @@
     <h1>Les sauces</h1>
 
     @foreach ($sauces as $sauce)
-        <article>
+        <sauce>
             <h2>{{ $sauce->name }}</h2>
             <p><strong>Fabricant:</strong> {{ $sauce->manufacturer }}</p>
             <p><strong>Description:</strong> {{ $sauce->description }}</p>
@@ -17,7 +17,7 @@
             <p><strong>Likes:</strong> {{ $sauce->likes }}</p>
             <p><strong>Dislikes:</strong> {{ $sauce->dislikes }}</p>
             <a href="{{ route('sauce.show', ['sauce' => $sauce->id]) }}">Voir la sauce</a>
-        </article>
+        </sauce>
     @endforeach
 
     {{ $sauces -> links() }}

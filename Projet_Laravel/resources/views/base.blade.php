@@ -9,6 +9,12 @@
 <body>
 
     <div class="container">
+        @if (session('success'))
+            <div>
+                {{session('sucess')}}
+            </div>  
+        @endif
+        
         @yield('content')
     </div>
     

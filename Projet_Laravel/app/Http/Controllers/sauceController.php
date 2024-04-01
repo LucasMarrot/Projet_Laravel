@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\Sauce;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\View;
+use App\Http\Requests\PostRequest;
 
 class SauceController extends Controller
 {
@@ -25,22 +26,26 @@ class SauceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('sauce.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\PostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        // TODO (Quand il y aura la fonction de connexion): $userId = Auth::id(); 
+
+        $sauce = Sauce::create($request->validated());
+        
+        return redirect()->route('sauce.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été ajoutée avec succès.');
     }
 
     /**
@@ -59,24 +64,28 @@ class SauceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Sauce $sauce
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sauce $sauce)
     {
-        //
+        return view('sauce.edit' , [
+            'sauce' => $sauce
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param PostRequest  $request
+     * @param  Sauce  $sauce
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Sauce $sauce, PostRequest $request)
     {
-        //
+        $sauce->update($request->validated());
+
+        return redirect()->route('sauce.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été modifiée avec succès.');
     }
 
     /**
