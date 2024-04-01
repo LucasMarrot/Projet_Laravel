@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\Sauce;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\View;
-use App\Http\Requests\PostRequest;
+use App\Http\Requests\FormPostRequest;
 
 class SauceController extends Controller
 {
@@ -30,16 +30,20 @@ class SauceController extends Controller
      */
     public function create(): View
     {
-        return view('sauce.create');
+        $sauce = new Sauce();
+
+        return view('sauce.create', [
+            'sauce' => $sauce
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  App\Http\Requests\PostRequest  $request
+     * @param  App\Http\Requests\FormPostRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostRequest $request)
+    public function store(FormPostRequest $request)
     {
         // TODO (Quand il y aura la fonction de connexion): $userId = Auth::id(); 
 
@@ -77,11 +81,11 @@ class SauceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PostRequest  $request
+     * @param FormPostRequest  $request
      * @param  Sauce  $sauce
      * @return \Illuminate\Http\Response
      */
-    public function update(Sauce $sauce, PostRequest $request)
+    public function update(Sauce $sauce, FormPostRequest $request)
     {
         $sauce->update($request->validated());
 

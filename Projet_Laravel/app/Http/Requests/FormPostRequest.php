@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PostRequest extends FormRequest
+class FormPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string','max:255', Rule::unique('sauces')->ignore($this->id)],
+            'name' => ['required', 'string','max:255', Rule::unique('sauces')->ignore($this->route()->parameter('sauce'))],
             'manufacturer' => ['required', 'string','max:255'],
             'description' => ['required', 'string'],
             'mainPepper' => ['required', 'string','max:255'],
