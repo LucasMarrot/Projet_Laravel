@@ -444,6 +444,26 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
+/* Styles pour la page d'accueil */
+.card {
+    margin-top: 50px; /* Espacement du haut de la carte */
+}
+
+.card-header {
+    background-color: #f54728; /* Couleur primaire */
+    color: #f5eddf; /* Couleur du texte */
+}
+
+.card-body {
+    color: #1c1b19; /* Couleur du texte */
+}
+
+.card-body p {
+    margin-bottom: 20px; /* Espacement entre les paragraphes */
+}
+
+
+
 
 
 
