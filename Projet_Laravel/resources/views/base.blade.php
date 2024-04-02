@@ -22,8 +22,8 @@
         <img src="{{ asset('img/HotTake_Logo.png') }}" alt="Hot takes logo">
     </a>
     <div class="auth">
-        <a href="#">Se connecter</a>
-        <a href="#">S'enregistrer</a>
+        <a href="/login">Se connecter</a>
+        <a href="/register">S'enregistrer</a>
     </div>
 </header>
 
