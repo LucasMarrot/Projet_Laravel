@@ -1,0 +1,212 @@
+/* Réinitialisation des styles et style de base */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5eddf; /* Couleur de fond pour le body */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #f54728; /* Couleur primaire */
+    color: #f5eddf; /* Couleur secondaire */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f5eddf;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #1c1b19;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.logo img {
+    width: 150px;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.logo img:hover {
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateX(-1px) rotate(0deg); }
+    25% { transform: translateX(1px) rotate(2deg); }
+    50% { transform: translateX(-1px) rotate(-2deg); }
+    75% { transform: translateX(1px) rotate(2deg); }
+    100% { transform: translateX(-1px) rotate(0deg); }
+}
+
+.auth a {
+    color: #f5eddf;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
+}
+
+.auth a:hover {
+    color: #1c1b19;
+}
+
+.success-message {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les cartes de sauces */
+.sauce {
+    background-color: #fff; /* Couleur de fond pour la carte */
+    border-radius: 10px; /* Bordures arrondies */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
+    margin-bottom: 20px;
+    padding: 20px;
+    width: calc(33.33% - 20px); /* Largeur de la carte (1/3 de l'écran) avec espace entre les cartes */
+    margin-right: 20px; /* Espace entre les cartes */
+    transition: transform 0.3s; /* Transition pour l'animation */
+}
+
+@media (max-width: 1200px) {
+    .sauce {
+        width: calc(50% - 20px); /* Largeur de la carte (1/2 de l'écran) avec espace entre les cartes */
+    }
+}
+
+@media (max-width: 768px) {
+    .sauce {
+        width: calc(100% - 20px); /* Largeur de la carte (pleine largeur) avec espace entre les cartes */
+        margin-right: 0; /* Pas d'espace entre les cartes */
+        margin-bottom: 20px;
+    }
+}
+
+.sauce img {
+    max-width: 100%; /* Image responsive */
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    border-radius: 5px; /* Bordures arrondies pour l'image */
+}
+
+/* Flexbox pour la grille */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Réinitialisation des marges pour chaque sauce */
+.sauce {
+    margin-right: 0;
+    margin-bottom: 20px;
+}
+
+.sauce:hover {
+    transform: translateY(-5px); /* Animation de levée au survol */
+}
+
+.sauce h2 {
+    color: #f54728; /* Couleur primaire */
+    margin-bottom: 10px;
+}
+
+.sauce p {
+    margin-bottom: 5px;
+}
+
+.sauce a {
+    text-decoration: none;
+    color: #f54728; /* Couleur primaire */
+    transition: color 0.3s; /* Transition de couleur pour l'interaction */
+}
+
+.sauce a:hover {
+    color: #1c1b19; /* Changement de couleur au survol */
+}
+
+.reactions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px; /* Espacement du bas */
+}
+
+.like,
+.dislike {
+    display: flex;
+    align-items: center;
+}
+
+.like i,
+.dislike i {
+    margin-right: 5px;
+}
+
+.like i {
+    color: #4caf50; /* Couleur verte pour les likes */
+}
+
+.dislike i {
+    color: #f44336; /* Couleur rouge pour les dislikes */
+}
+
+/* Styles pour le niveau de chaleur (heat) */
+.heat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px; /* Espacement du bas */
+}
+
+.heat span {
+    margin-right: 5px;
+    font-size: 18px; /* Taille de police */
+}
+
+/* Styles pour le bouton "Voir plus" */
+.view-more {
+    background-color: #f5eddf; /* Couleur primaire */
+    color: #1c1b19;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 10px; /* Espacement du bas */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-more:hover {
+    background-color: #f2674d; /* Couleur primaire légèrement plus foncée au survol */
+    color: #f5eddf;
+}
