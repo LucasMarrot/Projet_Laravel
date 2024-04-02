@@ -43,17 +43,30 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="heat">Heat (1-10) :</label>
-        <input type="number" id="heat" name="heat" min="1" max="10"  value="{{ old('heat', $sauce->heat) }}">
+        <label for="heat">Heat (1-10) : <span id="heat-value">{{ old('heat', $sauce->heat ? $sauce->heat : 5 ) }}</span></label>
+        <input type="range" id="heat" name="heat" min="1" max="10"  value="{{ old('heat', $sauce->heat ? $sauce->heat : 5) }}">
         @error('heat')
             <span class="error-message">{{ $message }}</span>
         @enderror
     </div>
-    <button type="submit" class="view-more">
-        @if ($sauce -> id)
-            Modifier la sauce
-        @else
-            Créer la sauce
-        @endif      
-    </button>
+    <div class="form-button">
+        <button type="submit" class="primary-button">
+            @if ($sauce -> id)
+                Modifier la sauce
+            @else
+                Créer la sauce
+            @endif      
+        </button>
+    <div class="form-group">
 </form>
+
+<script>
+    // Récupérer l'élément input range et l'élément span pour afficher la valeur
+    const heatInput = document.getElementById('heat');
+    const heatValue = document.getElementById('heat-value');
+
+    // Mettre à jour la valeur affichée lorsque la valeur du slider change
+    heatInput.addEventListener('input', function() {
+        heatValue.textContent = this.value;
+    });
+</script>

@@ -158,11 +158,11 @@ nav ul li a:hover {
     font-size: 18px; /* Taille de police */
 }
 
-/* Styles pour le bouton "Voir plus" */
-.view-more {
+/* Styles pour le bouton "primaire" */
+.primary-button {
     display: inline-block; /* Utilisation de display inline-block pour s'aligner correctement */
-    background-color: #f5eddf; /* Couleur primaire */
-    color: #f2674d;
+    background-color: #f54728 ; /* Couleur primaire */
+    color: #f5eddf;
     text-align: center;
     border: none;
     border-radius: 5px;
@@ -174,11 +174,39 @@ nav ul li a:hover {
     text-decoration: none;
 }
 
-.view-more:hover,
-.view-more:focus { /* Ajout de :focus pour assurer la cohérence des styles au focus */
-    background-color: #f2674d; /* Couleur primaire légèrement plus foncée au survol */
+.primary-button:hover,
+.primary-button:focus { /* Ajout de :focus pour assurer la cohérence des styles au focus */
+    text-decoration: none; 
+    filter: brightness(1.1);
+}
+.primary-button:active {
+    transform: translateY(1px); /* Décale le bouton vers le bas au clic */
+}
+
+/* Styles pour le bouton "secondaire" */
+.secondary-button {
+    display: inline-block; /* Utilisation de display inline-block pour s'aligner correctement */
+    background-color: #f5eddf; /* Couleur primaire */
+    color: #f54728;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    padding: 10px 20px;
+    margin: 10px; /* Espacement du bas */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.secondary-button:hover,
+.secondary-button:focus { /* Ajout de :focus pour assurer la cohérence des styles au focus */
+    background-color: #f54728; /* Couleur primaire légèrement plus foncée au survol */
     color: #f5eddf;
     text-decoration: none;
+}
+.secondary-button:active {
+    transform: translateY(1px); /* Décale le bouton vers le bas au clic */
 }
 
 .image {
@@ -326,6 +354,101 @@ nav ul li a:hover {
 
 .error-message {
     color: #f44336; /* Couleur du message d'erreur */
+    margin: 2px;
 }
+
+.form-button {
+    text-align: center;
+}
+
+/* Style pour afficher la valeur à côté du slider */
+#heat-value {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #f54728;
+}
+
+/* Styles pour le slider */
+input[type="range"] {
+    -webkit-appearance: none; /* Masquer l'apparence par défaut */
+    appearance: none;
+    width: 100%; /* Ajuster la largeur */
+    height: 1em; /* Hauteur du trait */
+    background: #fff; /* Couleur du trait */
+    border-radius: 20px; /* Arrondi des bords */
+    outline: none; /* Supprimer la bordure */
+}
+
+/* Style pour le curseur */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Masquer l'apparence par défaut */
+    appearance: none;
+    width: 30px; /* Largeur du curseur */
+    height: 30px; /* Hauteur du curseur */
+    background: #f54728; /* Couleur du curseur */
+    border-radius: 50%; /* Arrondi des bords pour créer un cercle */
+    cursor: pointer; /* Curseur de type pointer */
+}
+
+/* CSS pour la page de connexion */
+#remember {
+    margin-top: 3px;
+}
+
+.form-check-input:checked {
+    background-color: #f54728;
+    border-color: #f54728;
+}
+
+.label-color {
+    color: black;
+}
+
+.form-title {
+    color: #f54728; /* Couleur primaire */
+    text-align: center;
+}
+
+.login-forgot {
+    color: #f54728;
+}
+
+.custom-checkbox {
+    display: none; /* Masquer la checkbox par défaut */
+}
+
+.custom-checkbox + label::before {
+    content: '\f0c8'; /* Utilisation de l'icône Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.2em;
+    color: #f54728; /* Couleur de l'icône pour la checkbox non cochée */
+    margin-right: 0.3rem;
+}
+
+.custom-checkbox:checked + label::before {
+    content: '\f14a'; /* Changement de l'icône lorsque la checkbox est cochée */
+    color: #f54728; /* Couleur de l'icône pour la checkbox cochée */
+}
+
+/* CSS pour la page d'enregistrement */
+
+/* Ajustements spécifiques pour le formulaire d'enregistrement */
+
+#password-confirm {
+    margin-bottom: 20px; /* Espacement entre le champ de confirmation du mot de passe et le bouton d'envoi */
+}
+
+.register-title {
+    color: #f54728; /* Couleur primaire */
+    text-align: center;
+}
+
+
+
+
+
+
+
+
 
 

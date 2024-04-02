@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 
-                <a class="view-more" href="{{ route('sauce.show', ['sauce' => $sauce->id]) }}">Voir plus</a>
+                <a class="secondary-button" href="{{ route('sauce.show', ['sauce' => $sauce->id]) }}">Voir plus</a>
                 
             </div>
         @endforeach
