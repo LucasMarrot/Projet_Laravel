@@ -18,7 +18,7 @@
                     @auth
                         @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))
                             <h2 style="max-height: 8px;">{{ $sauce->name }}</h2>
-                            <a class="primary-button-link" href="{{ route('sauce.edit', $sauce->id) }}" >
+                            <a class="primary-button-link" href="{{ route('sauces.edit', $sauce->id) }}" >
                                 <i class="fa fa-edit"></i>
                             </a>           
                         @else
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 
-                <a class="secondary-button" href="{{ route('sauce.show', ['sauce' => $sauce->id]) }}">Voir plus</a>
+                <a class="secondary-button" href="{{ route('sauces.show', ['sauce' => $sauce->id]) }}">Voir plus</a>
                 
             </div>
         @endforeach

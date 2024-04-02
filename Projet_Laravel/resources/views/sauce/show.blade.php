@@ -9,7 +9,7 @@
             @auth
                 @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))
                     <h1>{{ $sauce->name }}</h1>                
-                    <a class="primary-button-link" href="{{ route('sauce.edit', $sauce->id) }}" >
+                    <a class="primary-button-link" href="{{ route('sauces.edit', $sauce->id) }}" >
                         <span>Modifier la sauce</span>
                         <i class="fa fa-edit"></i>
                     </a>           

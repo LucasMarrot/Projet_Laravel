@@ -13,18 +13,31 @@
 <header>
     <nav>
         <ul>
-            <li><a href="/" class="@yield('home_active')">Accueil</a></li>
-            <li><a href="/sauce" class="@yield('catalogue_active')">Catalogue</a></li>
-            <li><a href="/sauce/new" class="@yield('add_sauce_active')">Ajouter une sauce</a></li>
+            <li><a href="{{ route('home') }}" class="@yield('home_active')">Accueil</a></li>
+            <li><a href="{{ route('sauces.index') }}" class="@yield('catalogue_active')">Catalogue</a></li>
+            <li><a href="{{ route('sauces.create') }}" class="@yield('add_sauce_active')">Ajouter une sauce</a></li>
         </ul>
     </nav>
     <a href="/" class="logo">
         <img src="{{ asset('img/HotTake_Logo.png') }}" alt="Hot takes logo">
     </a>
-    <div class="auth">
-        <a href="/login">Se connecter</a>
-        <a href="/register">S'enregistrer</a>
-    </div>
+    @if (Auth::check())
+        <div class="auth">
+            <span>{{ Auth::user()->name }}</span>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt"></i>
+                Déconnexion
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
+    @else
+        <div class="auth">
+            <a href="{{ route('login') }}">Se connecter</a>
+            <a href="{{ route('register') }}">S'enregistrer</a>
+        </div>
+    @endif
 </header>
 
 <div class="container">

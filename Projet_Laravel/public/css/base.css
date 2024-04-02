@@ -48,6 +48,7 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #1c1b19;
+    transition: color 0.3s;
 }
 
 .logo {
@@ -78,11 +79,12 @@ nav ul li a:hover {
     color: #f5eddf;
     text-decoration: none;
     margin-left: 20px;
-    transition: color 0.3s;
+    cursor: pointer;
 }
 
 .auth a:hover {
     color: #1c1b19;
+    transition: color 0.3s;
 }
 
 .success-message {
@@ -190,6 +192,7 @@ nav ul li a:hover {
     text-decoration: none; 
     filter: brightness(1.1);
     color: #1c1b19;
+    transition: color 0.3s;
 }
 .primary-button:active {
     transform: translateY(1px); /* Décale le bouton vers le bas au clic */
@@ -216,6 +219,7 @@ nav ul li a:hover {
     background-color: #f54728; /* Couleur primaire légèrement plus foncée au survol */
     color: #f5eddf;
     text-decoration: none;
+    transition: color 0.3s;
 }
 .secondary-button:active {
     transform: translateY(1px); /* Décale le bouton vers le bas au clic */
@@ -274,6 +278,7 @@ nav ul li a:hover {
 .primary-button-link:focus {
     text-decoration: none;
     color: #1c1b19;
+    transition: color 0.3s;
 }
 .primary-button-link:active {
     transform: translateY(1px); /* Décale le bouton vers le bas au clic */
