@@ -5,7 +5,19 @@
 @section('content')
 
     <div class="sauce-details">
-        <h1>{{ $sauce->name }}</h1>
+        <div class="sauce-details-header">
+            @auth
+                @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))
+                    <h1>{{ $sauce->name }}</h1>                
+                    <a class="primary-button-link" href="{{ route('sauce.edit', $sauce->id) }}" >
+                        <span>Modifier la sauce</span>
+                        <i class="fa fa-edit"></i>
+                    </a>           
+                @else
+                    <h1>{{ $sauce->name }}</h1>                           
+                @endif
+            @endauth
+        </div>
         <div class="sauce-details-content">
             <div class="sauce-details-info">
                 <p><strong>Fabricant:</strong> {{ $sauce->manufacturer }}</p>

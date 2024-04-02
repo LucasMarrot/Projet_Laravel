@@ -1,5 +1,7 @@
 @extends('base')
 
+@section('home_active', 'active')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

@@ -9,6 +9,11 @@ body {
     background-color: #f5eddf; /* Couleur de fond pour le body */
 }
 
+.active {
+    color: #1c1b19; /* Couleur secondaire */
+    font-weight: bold;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -119,6 +124,12 @@ nav ul li a:hover {
     margin-bottom: 5px;
 }
 
+.sauce-header a {
+    position: relative;
+    top: -20px;
+    left: 290px;
+}
+
 .reactions {
     display: flex;
     justify-content: space-between;
@@ -178,6 +189,7 @@ nav ul li a:hover {
 .primary-button:focus { /* Ajout de :focus pour assurer la cohérence des styles au focus */
     text-decoration: none; 
     filter: brightness(1.1);
+    color: #1c1b19;
 }
 .primary-button:active {
     transform: translateY(1px); /* Décale le bouton vers le bas au clic */
@@ -230,8 +242,8 @@ nav ul li a:hover {
 }
 
 .sauce-details h1 {
-    color: #f54728; /* Couleur primaire */
     text-align: center;
+    color: #f54728; /* Couleur primaire */
 }
 
 .sauce-details-content {
@@ -239,9 +251,37 @@ nav ul li a:hover {
     flex-wrap: wrap; /* Permet aux éléments de s'adapter à la taille de leur conteneur */
 }
 
-.sauce-details-info {
+.sauce-details-header {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de s'adapter à la taille de leur conteneur */
+}
+
+.sauce-details-header h1 {
     flex: 1; /* Prend autant d'espace que possible */
     margin-right: 20px; /* Espacement entre les informations et le Heat */
+}
+
+.sauce-details-header span {
+    margin-right: 5px; /* Espacement entre les informations et le Heat */
+}
+
+.primary-button-link {
+    text-decoration: none;
+    color: #f54728; /* Couleur primaire */
+}
+
+.primary-button-link:hover,
+.primary-button-link:focus {
+    text-decoration: none;
+    color: #1c1b19;
+}
+.primary-button-link:active {
+    transform: translateY(1px); /* Décale le bouton vers le bas au clic */
+}
+
+.sauce-details-info {
+    flex: 1; /* Prend autant d'espace que possible */
+    margin: 0; /* Espacement entre les informations et le Heat */
 }
 
 .sauce-details-info p {

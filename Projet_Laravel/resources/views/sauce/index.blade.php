@@ -1,13 +1,31 @@
 @extends('base')
 
 @section('title', 'Accueil des sauces')
+@section('catalogue_active', 'active')
 
 @section('content')
 
     <div class="sauce-container">
         @foreach ($sauces as $sauce)
             <div class="sauce">
-                <h2>{{ $sauce->name }}</h2>
+                <div class="sauce-header" >
+                    @if (session('status'))
+                        <div class="success-message" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    @auth
+                        @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))
+                            <h2 style="max-height: 8px;">{{ $sauce->name }}</h2>
+                            <a class="primary-button-link" href="{{ route('sauce.edit', $sauce->id) }}" >
+                                <i class="fa fa-edit"></i>
+                            </a>           
+                        @else
+                            <h2>{{ $sauce->name }}</h2>                           
+                        @endif
+                    @endauth
+                </div>
                 <div class="info">
                     <p><strong>Fabricant:</strong> {{ $sauce->manufacturer }}</p>
                     <p><strong>Description:</strong> {{ $sauce->description }}</p>
