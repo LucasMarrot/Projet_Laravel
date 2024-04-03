@@ -129,7 +129,11 @@ nav ul li a:hover {
 .sauce-header a {
     position: relative;
     top: -20px;
-    left: 290px;
+    left: 260px;
+}
+
+.trash{
+    margin-left: 10px;
 }
 
 .reactions {
@@ -143,6 +147,15 @@ nav ul li a:hover {
 .dislike {
     display: flex;
     align-items: center;
+}
+
+.like i:hover,
+.dislike i:hover {
+    color: #1c1b19;
+    filter: brightness(1.1);
+    color: #1c1b19;
+    transition: color 0.3s;
+    transform: scale(1.1);
 }
 
 .like i,

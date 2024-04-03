@@ -21,6 +21,9 @@
                             <a class="primary-button-link" href="{{ route('sauces.edit', $sauce->id) }}" >
                                 <i class="fa fa-edit"></i>
                             </a>           
+                            <a class="primary-button-link trash" href="{{ route('sauces.delete', $sauce->id) }}" >
+                                <i class="fas fa-trash-alt"></i>
+                            </a>           
                         @else
                             <h2>{{ $sauce->name }}</h2>                           
                         @endif
@@ -38,12 +41,12 @@
                     <i class="fas fa-fire" style="color: {{ $sauce->heat <= 3 ? '#f5d547' : ($sauce->heat <= 6 ? '#ffa500' : '#ff6347') }}"></i>
                 </div>
                 <div class="reactions">
-                    <div class="like">
+                    <a class="like">
                         <i class="fas fa-thumbs-up"></i> {{ $sauce->likes }}
-                    </div>
-                    <div class="dislike">
+                    </a>
+                    <a class="dislike">
                         <i class="fas fa-thumbs-down"></i> {{ $sauce->dislikes }}
-                    </div>
+                    </a>
                 </div>
                 
                 <a class="secondary-button" href="{{ route('sauces.show', ['sauce' => $sauce->id]) }}">Voir plus</a>

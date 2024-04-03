@@ -25,6 +25,8 @@ Route::prefix('/sauces')->name('sauces.')->controller(SauceController::class)->g
 
         Route::get('/{sauce}/edit', 'edit')->name('edit');
         Route::post('/{sauce}/edit', 'update');
+
+        Route::get('/{sauce}/delete', 'destroy')->name('delete');
     });
     
     Route::get('/{sauce}', 'show')->where([

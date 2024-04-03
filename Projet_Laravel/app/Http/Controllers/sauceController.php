@@ -20,7 +20,7 @@ class SauceController extends Controller
     public function index() : View
     {
         return view('sauce.index', [
-            'sauces' => Sauce::paginate(10)
+            'sauces' => Sauce::simplePaginate(10)
         ]);
     }
 
@@ -103,11 +103,17 @@ class SauceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Sauce  $sauce
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sauce $sauce)
     {
-        //
+        $sauce = Sauce::findOrFail($sauce->id);
+
+        if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1)) {
+            $sauce->delete();
+
+            return redirect()->route('sauces.index')->with('success', 'Sauce supprimée avec succès');
+        }  
     }
 }
