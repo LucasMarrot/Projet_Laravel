@@ -8,6 +8,7 @@ use App\Models\Sauce;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\View\View;
 use App\Http\Requests\FormPostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SauceController extends Controller
 {
@@ -45,11 +46,18 @@ class SauceController extends Controller
      */
     public function store(FormPostRequest $request)
     {
-        // TODO (Quand il y aura la fonction de connexion): $userId = Auth::id(); 
+        $user = Auth::user();
+        $userId = $user->id;
 
-        $sauce = Sauce::create($request->validated());
-        
-        return redirect()->route('sauce.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été ajoutée avec succès.');
+        if ($userId) {
+            $requestData = $request->all();
+            $requestData['userId'] = $userId;
+            $request->replace($requestData);
+            
+            $sauce = Sauce::create($request->validated());
+
+            return redirect()->route('sauces.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été ajoutée avec succès.');
+        }
     }
 
     /**
@@ -89,7 +97,7 @@ class SauceController extends Controller
     {
         $sauce->update($request->validated());
 
-        return redirect()->route('sauce.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été modifiée avec succès.');
+        return redirect()->route('sauces.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été modifiée avec succès.');
     }
 
     /**

@@ -1,12 +1,6 @@
 <form method="POST" action="" enctype="multipart/form-data" class="sauce-form">
     @csrf
-    <div class="form-group">
-        <label for="userId">UserId :</label>
-        <input type="text" id="userId" name="userId" value="{{ old('userId', $sauce->userId) }}">
-        @error('userId')
-            <span class="error-message">{{ $message }}</span>
-        @enderror
-    </div>
+    <input type="hidden" id="userId" name="userId" value="{{ old('userId', $sauce->userId ? $sauce->userId : 0) }}">
     <div class="form-group">
         <label for="name">Nom de la sauce :</label>
         <input type="text" id="name" name="name" value="{{ old('name', $sauce->name) }}">

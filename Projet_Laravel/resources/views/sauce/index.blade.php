@@ -28,7 +28,6 @@
                 </div>
                 <div class="info">
                     <p><strong>Fabricant:</strong> {{ $sauce->manufacturer }}</p>
-                    <p><strong>Description:</strong> {{ $sauce->description }}</p>
                     <p><strong>Ingrédient principal:</strong> {{ $sauce->mainPepper }}</p>
                 </div>
                 <div class="image">
