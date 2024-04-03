@@ -5,17 +5,19 @@
 @section('content')
 
     <div class="sauce-details">
-        <div class="sauce-details-header">
+        <div class="sauce-details-header"> 
+            <h1>{{ $sauce->name }}</h1> 
             @auth
-                @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))
-                    <h1>{{ $sauce->name }}</h1>                
+                @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))               
                     <a class="primary-button-link" href="{{ route('sauces.edit', $sauce->id) }}" >
                         <span>Modifier la sauce</span>
                         <i class="fa fa-edit"></i>
-                    </a>           
-                @else
-                    <h1>{{ $sauce->name }}</h1>                           
-                @endif
+                    </a>
+                    <a class="primary-button-link trash" href="{{ route('sauces.delete', $sauce->id) }}" >
+                        <span>Supprimer la sauce</span>
+                        <i class="fas fa-trash-alt"></i>
+                    </a>      
+                    @endif                                         
             @endauth
         </div>
         <div class="sauce-details-content">

@@ -23,10 +23,10 @@
                             </a>           
                             <a class="primary-button-link trash" href="{{ route('sauces.delete', $sauce->id) }}" >
                                 <i class="fas fa-trash-alt"></i>
-                            </a>           
-                        @else
-                            <h2>{{ $sauce->name }}</h2>                           
+                            </a>                                     
                         @endif
+                    @else
+                        <h2>{{ $sauce->name }}</h2>
                     @endauth
                 </div>
                 <div class="info">
