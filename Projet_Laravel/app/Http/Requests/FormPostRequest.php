@@ -25,7 +25,7 @@ class FormPostRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string','max:255', Rule::unique('sauces')->ignore($this->route()->parameter('sauce'))],
+            'name' => ['required', 'string','max:20', Rule::unique('sauces')->ignore($this->route()->parameter('sauce'))],
             'manufacturer' => ['required', 'string','max:255'],
             'description' => ['required', 'string'],
             'mainPepper' => ['required', 'string','max:255'],
