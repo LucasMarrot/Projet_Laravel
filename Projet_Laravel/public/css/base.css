@@ -351,9 +351,10 @@ nav ul li a:hover {
 }
 
 .sauce-details-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+    max-width: 100%; /* Image responsive */
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    border-radius: 5px; /* Bordures arrondies pour l'image */
+    max-height: 400px;
 }
 
 .sauce-details-reactions {

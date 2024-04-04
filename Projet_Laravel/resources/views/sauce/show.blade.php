@@ -24,7 +24,7 @@
             <div class="sauce-details-info">
                 <p><strong>Fabricant:</strong> {{ $sauce->manufacturer }}</p>
                 <p><strong>Description:</strong> {{ $sauce->description }}</p>
-                <p><strong>Ingrédient principal:</strong> {{ $sauce->mainPepper }}</p>
+                <p><strong>Piment principal:</strong> {{ $sauce->mainPepper }}</p>
             </div>
             <div class="sauce-details-heat">
                 <div class="sauce-details-heat-rating" style="background-color: {{ $sauce->heat <= 3 ? '#f5d547' : ($sauce->heat <= 6 ? '#ffa500' : '#ff6347') }}">

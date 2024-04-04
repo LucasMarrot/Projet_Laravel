@@ -33,7 +33,7 @@
                 </div>
                 <div class="info">
                     <p><strong>Fabricant:</strong> {{ $sauce->manufacturer }}</p>
-                    <p><strong>Ingrédient principal:</strong> {{ $sauce->mainPepper }}</p>
+                    <p><strong>Piment principal:</strong> {{ $sauce->mainPepper }}</p>
                 </div>
                 <div class="image">
                     <img src="{{ $sauce->imageUrl }}" alt="Image de la sauce {{ $sauce->name }}">

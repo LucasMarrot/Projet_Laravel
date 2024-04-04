@@ -22,7 +22,7 @@
         @enderror
     </div>
     <div class="form-group">
-        <label for="mainPepper">Ingrédient principal :</label>
+        <label for="mainPepper">Piment principal :</label>
         <input type="text" id="mainPepper" name="mainPepper"  value="{{ old('mainPepper', $sauce->mainPepper) }}">
         @error('mainPepper')
             <span class="error-message">{{ $message }}</span>
