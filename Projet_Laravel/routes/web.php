@@ -27,6 +27,9 @@ Route::prefix('/sauces')->name('sauces.')->controller(SauceController::class)->g
         Route::post('/{sauce}/edit', 'update');
 
         Route::get('/{sauce}/delete', 'destroy')->name('delete');
+
+        Route::get('/{sauce}/like', 'like')->name('like');
+        Route::get('/{sauce}/dislike', 'dislike')->name('dislike');
     });
     
     Route::get('/{sauce}', 'show')->where([

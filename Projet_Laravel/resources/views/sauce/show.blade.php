@@ -8,7 +8,7 @@
         <div class="sauce-details-header"> 
             <h1>{{ $sauce->name }}</h1> 
             @auth
-                @if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1))               
+                @if((Auth::user()->id == $sauce->userId) || (Auth::user()->id == 1))               
                     <a class="primary-button-link" href="{{ route('sauces.edit', $sauce->id) }}" >
                         <span>Modifier la sauce</span>
                         <i class="fa fa-edit"></i>
@@ -36,15 +36,27 @@
             <img src="{{ $sauce->imageUrl }}" alt="Image de la sauce {{ $sauce->name }}">
         </div>
         <div class="sauce-details-reactions">
-            <div class="sauce-details-like">
+            @auth
+            <a class="sauce-details-like{{ (is_null($sauce->usersLiked) || !in_array(Auth::user()->id, json_decode($sauce->usersLiked))) ? '' : '-active' }}" href="{{ route('sauces.like', $sauce->id) }}">
                 <i class="fas fa-thumbs-up"></i> {{ $sauce->likes }}
-            </div>
+            </a>
+            @else
+            <a class="sauce-details-like" href="{{ route('sauces.like', $sauce->id) }}">
+                <i class="fas fa-thumbs-up"></i> {{ $sauce->likes }}
+            </a>
+            @endauth
             <div class="sauce-details-like-bar" style="background-color: {{ ($sauce->likes > 0 || $sauce->dislikes > 0) ? '#f44336' : '#ddd' }};">
                 <div class="sauce-details-like-fill" style="width: {{ ($sauce->likes + $sauce->dislikes) != 0 ? (($sauce->likes / ($sauce->likes + $sauce->dislikes)) * 100) : 0 }}%; background-color: {{ $sauce->likes > 0 ? '#4caf50' : ($sauce->dislikes > 0 ? '#f44336' : '#ddd') }};"></div>
             </div>
-            <div class="sauce-details-dislike">
+            @auth
+            <a class="sauce-details-dislike{{ (is_null($sauce->usersDisliked) || !in_array(Auth::user()->id, json_decode($sauce->usersDisliked))) ? '' : '-active' }}" href="{{ route('sauces.dislike', $sauce->id) }}">
                 <i class="fas fa-thumbs-down"></i> {{ $sauce->dislikes }}
-            </div>
+            </a>
+            @else
+            <a class="sauce-details-dislike" href="{{ route('sauces.dislike', $sauce->id) }}">
+                <i class="fas fa-thumbs-down"></i> {{ $sauce->dislikes }}
+            </a>
+            @endauth
         </div>
     </div>
     

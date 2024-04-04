@@ -20,7 +20,7 @@ class SauceController extends Controller
     public function index() : View
     {
         return view('sauce.index', [
-            'sauces' => Sauce::simplePaginate(10)
+            'sauces' => Sauce::simplePaginate(9)
         ]);
     }
 
@@ -46,18 +46,11 @@ class SauceController extends Controller
      */
     public function store(FormPostRequest $request)
     {
-        $user = Auth::user();
-        $userId = $user->id;
+        $sauce = new Sauce($request->validated());
+        $sauce->userId = Auth::user()->id;
+        $sauce->save();
 
-        if ($userId) {
-            $requestData = $request->all();
-            $requestData['userId'] = $userId;
-            $request->replace($requestData);
-            
-            $sauce = Sauce::create($request->validated());
-
-            return redirect()->route('sauces.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été ajoutée avec succès.');
-        }
+        return redirect()->route('sauces.show', ['sauce' => $sauce->id])->with('success', 'La sauce a été ajoutée avec succès.');
     }
 
     /**
@@ -81,9 +74,12 @@ class SauceController extends Controller
      */
     public function edit(Sauce $sauce)
     {
-        return view('sauce.edit' , [
-            'sauce' => $sauce
-        ]);
+        if((Auth::user()->id == $sauce->userId) || (Auth::user()->id == 1)) {
+            return view('sauce.edit' , ['sauce' => $sauce]);        
+        }
+        else {
+            return redirect()->route('sauces.index');
+        }  
     }
 
     /**
@@ -110,10 +106,117 @@ class SauceController extends Controller
     {
         $sauce = Sauce::findOrFail($sauce->id);
 
-        if((Auth::user()->id === $sauce->userId) || (Auth::user()->id === 1)) {
+        if((Auth::user()->id == $sauce->userId) || (Auth::user()->id == 1)) {
             $sauce->delete();
 
             return redirect()->route('sauces.index')->with('success', 'Sauce supprimée avec succès');
+        }
+        else {
+            return redirect()->route('sauces.index');
         }  
+    }
+
+    /**
+     * Like a sauce.
+     *
+     * @param  Sauce  $sauce
+     * @return \Illuminate\Http\Response
+     */
+    public function like(Sauce $sauce)
+    {
+        $sauce = Sauce::findOrFail($sauce->id);
+        $user = Auth::user();
+    
+        if (!is_null($sauce->usersDisliked) && in_array($user->id, json_decode($sauce->usersDisliked))) {
+            $usersDisliked = json_decode($sauce->usersDisliked);
+            $index = array_search($user->id, $usersDisliked);
+            unset($usersDisliked[$index]);
+            $sauce->usersDisliked = json_encode(array_values($usersDisliked));
+    
+            $sauce->dislikes--;
+    
+            $sauce->save();
+        }
+    
+        if (is_null($sauce->usersLiked)) {
+            $sauce->usersLiked = json_encode([]);
+        }
+
+        if (in_array($user->id, json_decode($sauce->usersLiked))) {
+            $usersLiked = json_decode($sauce->usersLiked);
+            $index = array_search($user->id, $usersLiked);
+            unset($usersLiked[$index]);
+            $sauce->usersLiked = json_encode(array_values($usersLiked));
+
+            $sauce->likes--;
+
+            $sauce->save();
+
+            return redirect()->back();
+        }
+    
+        if (!in_array($user->id, json_decode($sauce->usersLiked))) {
+            $usersLiked = json_decode($sauce->usersLiked);
+            array_push($usersLiked, $user->id);
+            $sauce->usersLiked = json_encode($usersLiked);
+    
+            $sauce->likes++;
+        }
+    
+        $sauce->save();
+    
+        return redirect()->back();
+    }
+
+    /**
+     * Dislike a sauce.
+     *
+     * @param  Sauce  $sauce
+     * @return \Illuminate\Http\Response
+     */
+    public function dislike(Sauce $sauce)
+    {
+        $sauce = Sauce::findOrFail($sauce->id);
+        $user = Auth::user();
+    
+        if (!is_null($sauce->usersLiked) && in_array($user->id, json_decode($sauce->usersLiked))) {
+            $usersLiked = json_decode($sauce->usersLiked);
+            $index = array_search($user->id, $usersLiked);
+            unset($usersLiked[$index]);
+            $sauce->usersLiked = json_encode(array_values($usersLiked));
+    
+            $sauce->likes--;
+    
+            $sauce->save();
+        }
+    
+        if (is_null($sauce->usersDisliked)) {
+            $sauce->usersDisliked = json_encode([]);
+        }
+    
+        if (in_array($user->id, json_decode($sauce->usersDisliked))) {
+            $usersDisliked = json_decode($sauce->usersDisliked);
+            $index = array_search($user->id, $usersDisliked);
+            unset($usersDisliked[$index]);
+            $sauce->usersDisliked = json_encode(array_values($usersDisliked));
+    
+            $sauce->dislikes--;
+    
+            $sauce->save();
+    
+            return redirect()->back();
+        }
+
+        if (!in_array($user->id, json_decode($sauce->usersDisliked))) {
+            $usersDisliked = json_decode($sauce->usersDisliked);
+            array_push($usersDisliked, $user->id);
+            $sauce->usersDisliked = json_encode($usersDisliked);
+    
+            $sauce->dislikes++;
+        }
+    
+        $sauce->save();
+    
+        return redirect()->back();
     }
 }

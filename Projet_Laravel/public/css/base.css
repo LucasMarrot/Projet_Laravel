@@ -10,7 +10,7 @@ body {
 }
 
 .active {
-    color: #1c1b19; /* Couleur secondaire */
+    color: #1c1b19;
     font-weight: bold;
 }
 
@@ -140,20 +140,22 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px; /* Espacement du bas */
+    margin: 10px;
+    text-decoration: none;
 }
 
 .like,
 .dislike {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: #1c1b19;
 }
 
 .like i:hover,
 .dislike i:hover {
     color: #1c1b19;
     filter: brightness(1.1);
-    color: #1c1b19;
     transition: color 0.3s;
     transform: scale(1.1);
 }
@@ -169,6 +171,19 @@ nav ul li a:hover {
 
 .dislike i {
     color: #f44336; /* Couleur rouge pour les dislikes */
+}
+
+.like-active,
+.dislike-active {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1c1b19;
+}
+
+.like-active i,
+.dislike-active i {
+    margin-right: 5px;
 }
 
 /* Styles pour le niveau de chaleur (heat) */
@@ -352,7 +367,18 @@ nav ul li a:hover {
 .sauce-details-reactions .sauce-details-dislike {
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: #1c1b19;
 }
+
+.sauce-details-like i:hover,
+.sauce-details-dislike i:hover {
+    color: #1c1b19;
+    filter: brightness(1.1);
+    transition: color 0.3s;
+    transform: scale(1.1);
+}
+
 
 .sauce-details-reactions .sauce-details-like i,
 .sauce-details-reactions .sauce-details-dislike i {
@@ -365,6 +391,19 @@ nav ul li a:hover {
 
 .sauce-details-dislike i {
     color: #f44336; /* Couleur rouge */
+}
+
+.sauce-details-like-active,
+.sauce-details-dislike-active {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1c1b19;
+}
+
+.sauce-details-like-active i,
+.sauce-details-dislike-active i {
+    margin-right: 5px;
 }
 
 .sauce-details-like-bar {

@@ -31,7 +31,6 @@ class FormPostRequest extends FormRequest
             'mainPepper' => ['required', 'string','max:255'],
             'imageUrl' => ['required', 'url'],
             'heat' => ['required', 'integer', 'min:1', 'max:10'],
-            'userId' => ['required', 'string']
         ];
     }
 }
