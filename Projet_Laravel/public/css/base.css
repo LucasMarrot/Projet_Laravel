@@ -267,7 +267,7 @@ nav ul li a:hover {
 
 /* Styles pour les détails de la sauce */
 .sauce-details {
-    background-color: #f5eddf; /* Couleur de fond */
+    background-color: white; /* Couleur de fond */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
