@@ -71,5 +71,17 @@ class DatabaseSeeder extends Seeder
             'heat' => 6,
             'userId' => 1,
         ]);
+
+        sauce::factory()->create([
+            'name' => "Waha Wera",
+            'manufacturer' => 'Kaitaia fire',
+            'description' => "Sauce piquante au kiwi et au piment habanero, produite en Nouvelle-Zélande.",
+            'mainPepper' => 'Habanero',
+            'imageUrl' => 'https://kiwikitchen.sg/wp-content/uploads/2020/11/Kaitaia-Waha-Wera-Kiwifruit-Habanero-Sauce-150ml.png',
+            'heat' => 7,
+            'userId' => 1,
+        ]);
+
+        sauce::factory(2)->create();
     }
 }
